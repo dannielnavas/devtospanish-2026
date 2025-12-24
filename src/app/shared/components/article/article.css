@@ -1,0 +1,9 @@
+.article-image {
+    background: linear-gradient(90deg, #1f2937 0%, #374151 50%, #1f2937 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}

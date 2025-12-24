@@ -1,0 +1,21 @@
+<app-header />
+<app-hero />
+<app-actions [countArticles]="$allArticles().length" />
+<div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (article of $allArticles(); track article.url) {
+            <app-article [articleData]="article" />
+        }
+    </div>
+</div>
+
+<div class="flex justify-center items-center gap-4 mt-8 pt-8 border-t border-gray-800">
+    <button
+        (click)="loadMoreArticles()"
+        class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 shadow-lg hover:shadow-cyan-500/30 cursor-pointer"
+    >
+        Cargar más artículos
+    </button>
+</div>
+
+<app-footer />
