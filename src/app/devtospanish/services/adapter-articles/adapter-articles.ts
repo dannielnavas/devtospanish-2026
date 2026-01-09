@@ -26,6 +26,7 @@ export class AdapterArticlesService {
       public_reactions_count: article.public_reactions_count,
       comments_count: article.comments_count,
       created_at: article.created_at,
+      flare_tag: article.flare_tag,
     };
   }
 }

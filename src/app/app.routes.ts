@@ -7,4 +7,9 @@ export const routes: Routes = [
     loadComponent: () => import('./devtospanish/pages/devtospanish/devtospanish').then(m => m.DevtospanishComponent),
     title: 'Devtospanish',
   },
+  {
+    path: 'about',
+    loadComponent: () => import('./devtospanish/pages/about/about').then(m => m.AboutComponent),
+    title: 'Acerca de - Devtospanish',
+  },
 ];

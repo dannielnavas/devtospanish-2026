@@ -19,7 +19,7 @@ export interface ArticleRaw  {
     canonical_url: string
     created_at: string
     edited_at?: string
-    crossposted_at: any
+    crossposted_at: unknown
     published_at: string
     last_comment_at: string
     reading_time_minutes: number
@@ -72,4 +72,5 @@ export interface ArticleRaw  {
     public_reactions_count: number,
     comments_count: number,
     created_at: string,
+    flare_tag?: FlareTag,
   }

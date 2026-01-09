@@ -1,15 +1,31 @@
 <div class="container mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sticky top-14 bg-gray-950/95 backdrop-blur-xl py-3 z-40 border-b border-gray-800">
     <div class="flex items-center gap-3 flex-wrap" role="group" aria-label="Filtros de contenido">
-        <button class="px-4 py-2 text-sm bg-cyan-500 text-white rounded-lg font-semibold hover:bg-cyan-400 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
-            Recientes <span class="ml-1 opacity-80">({{ countArticles() }})</span>
+        <button
+            (click)="onFilterClick('recentes')"
+            [attr.aria-pressed]="selectedFilter() === 'recentes'"
+            [attr.aria-label]="'Filtrar por artículos recientes. ' + countArticles() + ' artículos disponibles'"
+            [class]="selectedFilter() === 'recentes' ? 'px-4 py-2 text-sm bg-cyan-500 text-white rounded-lg font-semibold hover:bg-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95' : 'px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95'">
+            Recientes <span class="ml-1 opacity-80" aria-hidden="true">({{ countArticles() }})</span>
         </button>
-        <button class="px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
+        <button
+            (click)="onFilterClick('trending')"
+            [attr.aria-pressed]="selectedFilter() === 'trending'"
+            aria-label="Filtrar por artículos trending"
+            [class]="selectedFilter() === 'trending' ? 'px-4 py-2 text-sm bg-cyan-500 text-white rounded-lg font-semibold hover:bg-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95' : 'px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95'">
             Trending
         </button>
-        <button class="px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
+        <button
+            (click)="onFilterClick('mas-leidos')"
+            [attr.aria-pressed]="selectedFilter() === 'mas-leidos'"
+            aria-label="Filtrar por artículos más leídos"
+            [class]="selectedFilter() === 'mas-leidos' ? 'px-4 py-2 text-sm bg-cyan-500 text-white rounded-lg font-semibold hover:bg-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95' : 'px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95'">
             Más leídos
         </button>
-        <button class="px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
+        <button
+            (click)="onFilterClick('tutoriales')"
+            [attr.aria-pressed]="selectedFilter() === 'tutoriales'"
+            aria-label="Filtrar por tutoriales"
+            [class]="selectedFilter() === 'tutoriales' ? 'px-4 py-2 text-sm bg-cyan-500 text-white rounded-lg font-semibold hover:bg-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95' : 'px-4 py-2 text-sm bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-950 transform hover:scale-105 active:scale-95'">
             Tutoriales
         </button>
     </div>
@@ -17,11 +33,13 @@
     <div class="relative w-full sm:w-auto">
         <input
             type="search"
+            [value]="searchQuery()"
+            (input)="onSearchChange($event)"
             placeholder="Buscar artículos..."
-            class="w-full sm:w-64 px-4 py-2 pl-10 text-sm bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+            class="w-full sm:w-64 px-4 py-2 pl-10 text-sm bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-gray-600"
             aria-label="Buscar en artículos"
         >
-        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
     </div>

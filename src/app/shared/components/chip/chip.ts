@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
 
 const CHIP_COLORS = {
     Featured: 'bg-cyan-500',
@@ -12,6 +12,7 @@ const CHIP_COLORS = {
   imports: [],
   templateUrl: './chip.html',
   styleUrl: './chip.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipComponent {
     public label = input.required<string>();

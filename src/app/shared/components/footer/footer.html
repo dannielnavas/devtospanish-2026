@@ -1,18 +1,20 @@
 <footer class="border-t border-gray-800 bg-gray-900/50 mt-16">
     <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">DevTo</span>
-                <span class="text-gray-100">en español</span>
-                <span class="text-gray-400 text-sm">• Comunidad de desarrolladores en español</span>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">DevTo</span>
+                    <span class="text-gray-100">en español</span>
+                </div>
+                <span class="text-gray-300 text-sm hidden sm:inline">• Comunidad de desarrolladores en español</span>
             </div>
-            <div class="flex items-center gap-6 text-sm text-gray-400">
-                <a routerLink="/about" class="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1">Acerca de</a>
-                <a href="https://github.com/dannielnavas" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1">Contacto</a>
-                <a href="https://dev.to" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1">Visitar DEV.to</a>
-            </div>
+            <nav class="flex items-center gap-6 text-sm text-gray-300" aria-label="Enlaces del pie de página">
+                <a routerLink="/about" aria-label="Acerca de este sitio" class="hover:text-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1 hover:underline">Acerca de</a>
+                <a href="https://github.com/dannielnavas" target="_blank" rel="noopener noreferrer" aria-label="Contacto en GitHub, se abre en nueva ventana" class="hover:text-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1 hover:underline">Contacto</a>
+                <a href="https://dev.to" target="_blank" rel="noopener noreferrer" aria-label="Visitar DEV.to, se abre en nueva ventana" class="hover:text-cyan-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1 hover:underline">Visitar DEV.to</a>
+            </nav>
         </div>
-        <div class="text-center mt-6 text-sm text-gray-500">
+        <div class="text-center mt-6 text-sm text-gray-400" role="contentinfo">
             <p>Contenido agregado de dev.to • Todos los derechos pertenecen a sus respectivos autores</p>
         </div>
     </div>
